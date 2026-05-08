@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-header bg-success text-white">
+        <h4 class="mb-0">Ajouter un produit</h4>
+      </div>
+      <div class="card-body">
+        <form #f="ngForm" (ngSubmit)="ajouter(f)">
+
+          <div class="mb-3">
+            <label class="form-label">Nom</label>
+            <input type="text" class="form-control"
+                   required ngModel name="nom">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Prix</label>
+            <input type="number" class="form-control"
+                   required ngModel name="prix" min="0">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control"
+                      ngModel name="description" rows="3">
+            </textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Stock</label>
+            <input type="number" class="form-control"
+                   required ngModel name="stock" min="0">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Catégorie</label>
+            <select class="form-select" required ngModel name="categorie_id">
+              <option value="">-- Choisir une catégorie --</option>
+              <option *ngFor="let c of lescategories" [value]="c.id">
+                {{ c.nom }}
+              </option>
+            </select>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success"
+                    [disabled]="f.invalid">
+              Ajouter
+            </button>
+            <a routerLink="/produits" class="btn btn-secondary">
+              Annuler
+            </a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

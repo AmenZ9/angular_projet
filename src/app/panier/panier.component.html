@@ -1,0 +1,42 @@
+<h2 class="mb-4">Mon Panier</h2>
+
+<div class="alert alert-info" *ngIf="lesitems.length === 0">
+  Votre panier est vide.
+  <a routerLink="/produits" class="alert-link">Retour aux produits</a>
+</div>
+
+<div *ngIf="lesitems.length > 0">
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Produit</th>
+        <th>Prix unitaire</th>
+        <th>Quantité</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of lesitems">
+        <td>{{ item.produit.nom }}</td>
+        <td>{{ item.produit.prix }} TND</td>
+        <td>{{ item.quantite }}</td>
+        <td>{{ item.produit.prix * item.quantite }} TND</td>
+        <td>
+          <button class="btn btn-sm btn-danger"
+                  (click)="supprimer(item.id)">
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="text-end">
+    <h4>Total : <strong>{{ getTotal() }} TND</strong></h4>
+  </div>
+
+  <a routerLink="/produits" class="btn btn-outline-dark mt-2">
+    Continuer les achats
+  </a>
+</div>

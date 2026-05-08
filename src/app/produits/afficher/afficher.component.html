@@ -1,0 +1,58 @@
+<h2 class="mb-4">Liste des produits</h2>
+
+<!-- Filtre catégories -->
+<div class="mb-3">
+  <button class="btn btn-secondary me-2"
+          (click)="filtrerParCategorie(0)">
+    Tous
+  </button>
+  <button class="btn btn-outline-secondary me-2"
+          *ngFor="let c of lescategories"
+          (click)="filtrerParCategorie(c.id)">
+    {{ c.nom }}
+  </button>
+</div>
+
+<hr>
+
+<!-- Bouton ajouter -->
+<a routerLink="/produits/ajouter" class="btn btn-success mb-4">
+  + Ajouter un produit
+</a>
+
+<!-- Grille de produits -->
+<div class="row">
+  <div class="col-md-4 mb-4" *ngFor="let p of produitsFiltres">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ p.nom }}</h5>
+        <p class="card-text text-muted">{{ p.description }}</p>
+        <p class="card-text">
+          <strong>Prix :</strong> {{ p.prix }} TND
+        </p>
+        <p class="card-text">
+          <span class="badge"
+                [ngClass]="p.stock > 0 ? 'bg-success' : 'bg-danger'">
+            Stock : {{ p.stock > 0 ? p.stock + ' dispo' : 'Rupture' }}
+          </span>
+        </p>
+      </div>
+      <div class="card-footer d-flex justify-content-between">
+        <a routerLink="/produits/modifier/{{ p.id }}"
+           class="btn btn-sm btn-warning">Modifier</a>
+        <a routerLink="/produits/supprimer/{{ p.id }}"
+           class="btn btn-sm btn-danger">Supprimer</a>
+        <button class="btn btn-sm btn-primary"
+                (click)="commander(p)"
+                [disabled]="p.stock === 0">
+          Commander
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Aucun produit -->
+<div class="alert alert-info" *ngIf="produitsFiltres.length === 0">
+  Aucun produit trouvé.
+</div>
