@@ -5,6 +5,12 @@
     <div class="navbar-nav ms-auto">
       <a class="nav-link text-white" routerLink="/produits">Produits</a>
       <a class="nav-link text-white" routerLink="/panier">Panier</a>
+       <a *ngIf="isAdmin()" class="nav-link text-white" routerLink="/categories">
+        Categories
+      </a>
+      <a class="nav-link text-danger" (click)="logout()" style="cursor:pointer;">
+  Logout
+</a>
     </div>
   </div>
 </nav>

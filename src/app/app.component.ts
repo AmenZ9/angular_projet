@@ -24,4 +24,14 @@ export class AppComponent {
     });
 
   }
+
+  isAdmin(): boolean {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.role === 'ADMIN';
+  }
+
+  logout(): void {
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+  }
 }

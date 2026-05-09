@@ -57,4 +57,13 @@ export class AfficherComponent implements OnInit {
       error => { alert('Erreur lors de l\'ajout au panier'); }
     );
   }
+   isAdmin(): boolean {
+
+    const user = JSON.parse(
+      localStorage.getItem('user') || '{}'
+    );
+
+    return user.role === 'ADMIN';
+  }
+
 }

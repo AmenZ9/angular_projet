@@ -6,6 +6,7 @@
           (click)="filtrerParCategorie(0)">
     Tous
   </button>
+
   <button class="btn btn-outline-secondary me-2"
           *ngFor="let c of lescategories"
           (click)="filtrerParCategorie(c.id)">
@@ -15,40 +16,71 @@
 
 <hr>
 
-<!-- Bouton ajouter -->
-<a routerLink="/produits/ajouter" class="btn btn-success mb-4">
+<!-- Bouton ajouter ADMIN -->
+<a *ngIf="isAdmin()"
+   routerLink="/produits/ajouter"
+   class="btn btn-success mb-4">
   + Ajouter un produit
 </a>
 
 <!-- Grille de produits -->
 <div class="row">
   <div class="col-md-4 mb-4" *ngFor="let p of produitsFiltres">
+
     <div class="card h-100 shadow-sm">
+
       <div class="card-body">
         <h5 class="card-title">{{ p.nom }}</h5>
-        <p class="card-text text-muted">{{ p.description }}</p>
+
+        <p class="card-text text-muted">
+          {{ p.description }}
+        </p>
+
         <p class="card-text">
           <strong>Prix :</strong> {{ p.prix }} TND
         </p>
+
         <p class="card-text">
           <span class="badge"
                 [ngClass]="p.stock > 0 ? 'bg-success' : 'bg-danger'">
-            Stock : {{ p.stock > 0 ? p.stock + ' dispo' : 'Rupture' }}
+
+            Stock :
+            {{ p.stock > 0 ? p.stock + ' dispo' : 'Rupture' }}
+
           </span>
         </p>
       </div>
-      <div class="card-footer d-flex justify-content-between">
-        <a routerLink="/produits/modifier/{{ p.id }}"
-           class="btn btn-sm btn-warning">Modifier</a>
-        <a routerLink="/produits/supprimer/{{ p.id }}"
-           class="btn btn-sm btn-danger">Supprimer</a>
-        <button class="btn btn-sm btn-primary"
+
+      <div class="card-footer d-flex justify-content-between align-items-center">
+
+        <!-- ADMIN BUTTONS -->
+        <div *ngIf="isAdmin()" class="d-flex gap-2">
+
+          <a routerLink="/produits/modifier/{{ p.id }}"
+             class="btn btn-sm btn-warning">
+            Modifier
+          </a>
+
+          <a routerLink="/produits/supprimer/{{ p.id }}"
+             class="btn btn-sm btn-danger">
+            Supprimer
+          </a>
+
+        </div>
+
+        <!-- USER BUTTON -->
+        <button class="btn btn-sm btn-primary ms-auto"
                 (click)="commander(p)"
                 [disabled]="p.stock === 0">
+
           Commander
+
         </button>
+
       </div>
+
     </div>
+
   </div>
 </div>
 
