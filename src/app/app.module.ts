@@ -11,6 +11,10 @@ import { AjouterComponent }   from './produits/ajouter/ajouter.component';
 import { ModifierComponent }  from './produits/modifier/modifier.component';
 import { SupprimerComponent } from './produits/supprimer/supprimer.component';
 import { PanierComponent }    from './panier/panier.component';
+import { ListeComponent } from './categories/liste/liste.component';
+import { AjouterCategorieComponent } from './categories/ajouter-categorie/ajouter-categorie.component';
+import { SupprimerCategorieComponent } from './categories/supprimer-categorie/supprimer-categorie.component';
+import { ModifierCategorieComponent } from './categories/modifier-categorie/modifier-categorie.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +24,16 @@ import { PanierComponent }    from './panier/panier.component';
     ModifierComponent,
     SupprimerComponent,
     PanierComponent,
+    
+    AjouterCategorieComponent,
+    SupprimerCategorieComponent,
+    ModifierCategorieComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ListeComponent,
     FormsModule,
   ],
   providers: [],

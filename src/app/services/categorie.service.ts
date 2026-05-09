@@ -23,6 +23,10 @@ export class CategorieService {
     return this.http.post<any>(this.apiUrl, c);
   }
 
+  modifierCategorie(id: number, c: Categorie) {
+    return this.http.patch<any>(this.apiUrl + '/' + id, c);
+  }
+
   supprimerCategorie(id: number) {
     return this.http.delete<any>(this.apiUrl + '/' + id);
   }
