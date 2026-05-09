@@ -33,6 +33,13 @@ export class Utilisateur extends Entity {
   })
   dateCreation: string;
 
+  @property({
+    type: 'string',
+    required: true,
+    default: 'USER',
+  })
+  role: string;
+
 
   constructor(data?: Partial<Utilisateur>) {
     super(data);
