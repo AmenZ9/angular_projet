@@ -28,26 +28,25 @@ export class Utilisateur extends Entity {
   password: string;
 
   @property({
-    type: 'string',
-    required: true,
+    type: 'date',
+
+    defaultFn: 'now',
   })
-  dateCreation: string;
+  dateCreation: Date;
 
   @property({
     type: 'string',
-    required: true,
+
     default: 'USER',
   })
   role: string;
-
 
   constructor(data?: Partial<Utilisateur>) {
     super(data);
   }
 }
-
 export interface UtilisateurRelations {
-  // describe navigational properties here
+  // describe navigational properties here if you have relations
 }
 
 export type UtilisateurWithRelations = Utilisateur & UtilisateurRelations;
