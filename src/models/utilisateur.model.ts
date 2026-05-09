@@ -31,7 +31,7 @@ export class Utilisateur extends Entity {
     type: 'date',
     required: true,
   })
-  dateCreation: string;
+  dateCreation: Date;
 
   @property({
     type: 'string',
