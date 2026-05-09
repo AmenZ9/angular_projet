@@ -58,7 +58,7 @@ export class LoginComponent {
 
         this.router.navigate(['/produits']);
       } else {
-        this.msgErreur = "Login et/ou mot de passe incorrect";
+        alert("Login et/ou mot de passe incorrect");
       }
 
     });
