@@ -28,7 +28,7 @@ export class Utilisateur extends Entity {
   password: string;
 
   @property({
-    type: 'date',
+    type: 'string',
     required: true,
   })
   dateCreation: string;
