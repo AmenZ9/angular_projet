@@ -1,0 +1,111 @@
+<div class="auth-container">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="stripes">
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+    </div>
+    <div class="left-content">
+      <h1>Bienvenue<br>dans notre site!</h1>
+      <p>Rejoignez notre site web et découvrez nos services et offres exclusifs.</p>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-card">
+
+    <!-- Header -->
+    <div class="auth-header">
+      <h3>
+        <fa-icon [icon]="faLogin"></fa-icon>
+        Bon retour
+      </h3>
+      <p>Connecte-toi pour continuer</p>
+    </div>
+
+    <!-- Form -->
+    <form #f="ngForm" (ngSubmit)="verifier(f)" >
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">
+          <fa-icon [icon]="faEnvelope"></fa-icon>
+          Email
+        </label>
+        <div class="input-icon">
+          <fa-icon [icon]="faEnvelope" class="icon"></fa-icon>
+          <input
+            type="email"
+            class="custom-input"
+            name="email"
+            placeholder="exemple@mail.com"
+            ngModel
+            required
+            #email="ngModel"
+          />
+        </div>
+        <div class="error-text" *ngIf="email.invalid && email.touched">
+          Email requis
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label">
+          <fa-icon [icon]="faLock"></fa-icon>
+          Mot de passe
+        </label>
+        <div class="input-icon password-wrapper">
+          <fa-icon [icon]="faKey" class="icon"></fa-icon>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="custom-input"
+            name="password"
+            placeholder="••••••••"
+            ngModel
+            required
+            #pass="ngModel"
+          />
+          <fa-icon
+            class="toggle-icon"
+            [icon]="showPassword ? faEyeSlash : faEye"
+            (click)="togglePassword()"
+          ></fa-icon>
+        </div>
+        <div class="error-text" *ngIf="pass.invalid && pass.touched">
+          Mot de passe requis
+        </div>
+      </div>
+
+      <!-- Forgot password -->
+      <div class="text-end mb-2">
+        <a href="#" class="forgot-link">
+          <fa-icon [icon]="faKey"></fa-icon>
+          Mot de passe oublié
+        </a>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn-login w-100" [disabled]="f.invalid">
+        <fa-icon [icon]="faLogin"></fa-icon>
+        Se connecter
+      </button>
+
+    </form>
+
+    <!-- Footer -->
+    <div class="switch-text">
+      Pas de compte ?
+      <a routerLink="/register">
+        <fa-icon [icon]="faUserPlus"></fa-icon>
+        Créer un compte
+      </a>
+    </div>
+
+  </div>
+</div>

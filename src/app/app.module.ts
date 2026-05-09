@@ -15,6 +15,9 @@ import { ListeComponent } from './categories/liste/liste.component';
 import { AjouterCategorieComponent } from './categories/ajouter-categorie/ajouter-categorie.component';
 import { SupprimerCategorieComponent } from './categories/supprimer-categorie/supprimer-categorie.component';
 import { ModifierCategorieComponent } from './categories/modifier-categorie/modifier-categorie.component';
+import { LoginComponent } from './Authentification/login/login.component';
+import { RegisterComponent } from './Authentification/register/register.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { ModifierCategorieComponent } from './categories/modifier-categorie/modi
     AjouterCategorieComponent,
     SupprimerCategorieComponent,
     ModifierCategorieComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,7 @@ import { ModifierCategorieComponent } from './categories/modifier-categorie/modi
     HttpClientModule,
     ListeComponent,
     FormsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

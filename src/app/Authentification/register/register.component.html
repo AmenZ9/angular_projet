@@ -1,0 +1,131 @@
+<div class="auth-container">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="stripes">
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+      <div class="stripe"></div>
+    </div>
+    <div class="left-content">
+      <h1>Rejoignez-nous dès <br>aujourd'hui !</h1>
+      <p>Crée ton compte en quelques secondes et accède à toutes nos fonctionnalités.</p>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-card">
+
+    <!-- Header -->
+    <div class="auth-header">
+      <h3>
+        <fa-icon [icon]="faUserPlus"></fa-icon>
+        Créer un compte
+      </h3>
+      <p>Rejoins-nous, c'est gratuit !</p>
+    </div>
+
+    <!-- Form -->
+    <form #f="ngForm" (ngSubmit)="register(f)">
+
+      <!-- Username -->
+      <div class="mb-3">
+        <label class="form-label">
+          <fa-icon [icon]="faUser"></fa-icon>
+          Nom d'utilisateur
+        </label>
+        <div class="input-icon">
+          <fa-icon [icon]="faUser" class="icon"></fa-icon>
+          <input
+            type="text"
+            class="custom-input"
+            name="username"
+            placeholder="john_doe"
+            ngModel
+            required
+            minlength="3"
+            #username="ngModel"
+          />
+        </div>
+        <div class="error-text" *ngIf="username.invalid && username.touched">
+          Nom d'utilisateur requis (min. 3 caractères)
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">
+          <fa-icon [icon]="faEnvelope"></fa-icon>
+          Email
+        </label>
+        <div class="input-icon">
+          <fa-icon [icon]="faEnvelope" class="icon"></fa-icon>
+          <input
+            type="email"
+            class="custom-input"
+            name="email"
+            placeholder="exemple@mail.com"
+            ngModel
+            required
+            email
+            #email="ngModel"
+          />
+        </div>
+        <div class="error-text" *ngIf="email.invalid && email.touched">
+          Email invalide ou requis
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label">
+          <fa-icon [icon]="faLock"></fa-icon>
+          Mot de passe
+        </label>
+        <div class="input-icon password-wrapper">
+          <fa-icon [icon]="faKey" class="icon"></fa-icon>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="custom-input"
+            name="password"
+            placeholder="••••••••"
+            ngModel
+            required
+            minlength="6"
+            #pass="ngModel"
+          />
+          <fa-icon
+            class="toggle-icon"
+            [icon]="showPassword ? faEyeSlash : faEye"
+            (click)="togglePassword()"
+          ></fa-icon>
+        </div>
+        <div class="error-text" *ngIf="pass.invalid && pass.touched">
+          Mot de passe requis (min. 6 caractères)
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn-register w-100" [disabled]="f.invalid">
+        <fa-icon [icon]="faUserPlus"></fa-icon>
+        S'inscrire
+      </button>
+
+    </form>
+
+    <!-- Footer -->
+    <div class="switch-text">
+      Déjà un compte ?
+      <a routerLink="/login">
+        <fa-icon [icon]="faRightToBracket"></fa-icon>
+        Se connecter
+      </a>
+    </div>
+
+  </div>
+
+  
+</div>

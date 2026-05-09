@@ -10,6 +10,8 @@ import { ListeComponent }     from './categories/liste/liste.component';
 import {AjouterCategorieComponent} from './categories/ajouter-categorie/ajouter-categorie.component';
 import {ModifierCategorieComponent} from './categories/modifier-categorie/modifier-categorie.component';
 import {SupprimerCategorieComponent} from './categories/supprimer-categorie/supprimer-categorie.component';
+import { LoginComponent } from './Authentification/login/login.component';
+import { RegisterComponent } from './Authentification/register/register.component';
 
 const routes: Routes = [
   { path: 'produits',               component: AfficherComponent },
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path: 'categories/ajouter',       component: AjouterCategorieComponent },
   {path: 'categories/modifier/:id',  component: ModifierCategorieComponent },
   {path: 'categories/supprimer/:id', component: SupprimerCategorieComponent },
-  { path: '',  redirectTo: 'produits', pathMatch: 'full' }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '',  redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({
